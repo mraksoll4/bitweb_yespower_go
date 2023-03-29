@@ -28,13 +28,11 @@ import (
     "unsafe"
 )
 
-func YespowerHash(input []byte) ([]byte, error) {
-    output := make([]byte, 32)
-    cInput := C.CString(string(input))
-    defer C.free(unsafe.Pointer(cInput))
-    cOutput := (*C.char)(unsafe.Pointer(&output[0]))
-    if C.yespower_hash(cInput, cOutput) != 0 {
-        return nil, fmt.Errorf("error computing yespower hash")
-    }
-    return output, nil
+func YespowerHash(input []byte) []byte {
+	output := make([]byte, 32)
+	cInput := C.CString(string(input))
+	defer C.free(unsafe.Pointer(cInput))
+	cOutput := (*C.char)(unsafe.Pointer(&output[0]))
+	C.yespower_hash(cInput, cOutput)
+	return output
 }
