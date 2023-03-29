@@ -24,7 +24,6 @@ int yespower_hash(const char *input, char *output)
 */
 import "C"
 import (
-    "fmt"
     "unsafe"
 )
 
