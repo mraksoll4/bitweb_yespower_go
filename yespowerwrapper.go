@@ -28,7 +28,7 @@ import (
     "unsafe"
 )
 
-func yespower(input []byte) ([]byte, error) {
+func YespowerHash(input []byte) ([]byte, error) {
     output := make([]byte, 32)
     cInput := C.CString(string(input))
     defer C.free(unsafe.Pointer(cInput))
